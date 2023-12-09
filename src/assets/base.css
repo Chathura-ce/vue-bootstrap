@@ -84,3 +84,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-light-blue{
+  background-color: #e3f2fd;
+}
