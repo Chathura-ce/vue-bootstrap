@@ -1,3 +1,3 @@
 <template>
-  <template>You're logged in!</template>
+  <h1>Vehicles</h1>
 </template>
