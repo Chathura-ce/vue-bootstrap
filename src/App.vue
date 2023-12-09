@@ -26,6 +26,12 @@ const auth = useAuth();
               </ul>
               <ul class="navbar-nav ml-auto" v-if="auth.check">
                 <li class="nav-item">
+                  <RouterLink class="nav-link" :to="{name:'profile.change-password'}">Change Password</RouterLink>
+                </li>
+                <li class="nav-item">
+                  <RouterLink class="nav-link" :to="{name:'profile.edit'}">Profile</RouterLink>
+                </li>
+                <li class="nav-item">
                   <button @click="auth.logout" class="nav-link">Logout</button>
                 </li>
               </ul>
