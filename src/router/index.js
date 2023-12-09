@@ -38,19 +38,7 @@ const router = createRouter({
       name: 'vehicles.index',
       beforeEnter:auth,
       component: () => import('@/views/Vehicles/IndexView.vue')
-    },
-    {
-      path: '/profile',
-      name: 'profile.edit',
-      beforeEnter:auth,
-      component: () => import('@/views/Profile/EditView.vue')
-    },
-    {
-      path: "/profile/change-password",
-      name: "profile.change-password",
-      beforeEnter: auth,
-      component: () => import("@/views/Profile/ChangePassword.vue"),
-    },
+    }
   ]
 })
 
