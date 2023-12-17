@@ -33,7 +33,9 @@ onMounted(store.getVehicles);
                           class="btn btn-outline-secondary btn-sm">
                         <i class="bi bi-pencil"/>
                       </RouterLink>
-                      <button class="btn btn-outline-danger btn-sm ms-2"><i class="bi bi-trash"></i></button>
+                      <button
+                          @click="store.deleteVehicle(vehicle)"
+                          class="btn btn-outline-danger btn-sm ms-2"><i class="bi bi-trash"></i></button>
                     </div>
                   </div>
                 </li>

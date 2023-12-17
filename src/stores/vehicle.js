@@ -39,7 +39,7 @@ export const useVehicle = defineStore('vehicle', () => {
             })
     }
 
-    function updateVehicle(vehicle){
+    function updateVehicle(vehicle) {
         if (loading.value) return
 
         loading.value = true
@@ -76,5 +76,9 @@ export const useVehicle = defineStore('vehicle', () => {
             .then((response) => (vehicles.value = response.data.data))
     }
 
-    return {errors, form, resetForm, loading, storeVehicle, vehicles, getVehicles,updateVehicle,getVehicle}
+    function deleteVehicle(vehicle) {
+        window.axios.delete(`vehicles/${vehicle.id}`).then(getVehicles)
+    }
+
+    return {errors, form, resetForm, loading, storeVehicle, vehicles, getVehicles, updateVehicle, getVehicle,deleteVehicle}
 })
