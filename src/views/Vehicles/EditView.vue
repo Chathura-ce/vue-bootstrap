@@ -45,7 +45,7 @@ watchEffect(async () => {
               </div>
               <div class="mb-3">
                 <label for="description" class="form-label"
-                >Description<span class="text-danger">*</span></label
+                >Description<span class="text-danger"></span></label
                 >
                 <input
                     v-model="store.form.description"
