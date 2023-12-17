@@ -3,12 +3,6 @@ import { onBeforeUnmount } from 'vue'
 import { useVehicle } from '@/stores/vehicle'
 const store = useVehicle()
 onBeforeUnmount(store.resetForm)
-const validationClass = (field) => {
-  if (store.errors?.value?.[field]?.length > 0) {
-    return 'is-invalid'
-  }
-  return ''
-}
 </script>
 
 <template>
@@ -28,7 +22,7 @@ const validationClass = (field) => {
                   type="text"
                   class="form-control plate"
                   :disabled="store.loading"
-                  :class="validationClass('plate_number')"
+                  :class="{ 'is-invalid': store.errors?.value?.plate_number?.length > 0 }"
                   id="plate_number"
                   name="plate_number"
                   aria-describedby="plate_numberHelp"
@@ -44,7 +38,7 @@ const validationClass = (field) => {
                   type="text"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('description')"
+                  :class="{ 'is-invalid': store.errors?.value?.description?.length > 0 }"
                   id="description"
                   name="description"
                   placeholder="My Ferrari, Big truck, Rental"

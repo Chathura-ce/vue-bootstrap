@@ -4,12 +4,6 @@ import { onBeforeUnmount } from 'vue'
 
 const store = useChangePassword()
 onBeforeUnmount(store.resetForm)
-const validationClass = (field) => {
-  if (store.errors?.value?.[field]?.length > 0) {
-    return 'is-invalid'
-  }
-  return ''
-}
 </script>
 
 <template>
@@ -30,7 +24,7 @@ const validationClass = (field) => {
                   type="password"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('current_password')"
+                  :class="{ 'is-invalid': store.errors?.value?.current_password?.length > 0 }"
                   id="current_password"
                   name="current_password"
                   aria-describedby="current_passwordHelp"
@@ -46,7 +40,7 @@ const validationClass = (field) => {
                   type="password"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('password')"
+                  :class="{ 'is-invalid': store.errors?.value?.password?.length > 0 }"
                   id="password"
                   name="password"
                   aria-describedby="passwordHelp"
@@ -62,7 +56,7 @@ const validationClass = (field) => {
                   type="password"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('password_confirmation')"
+                  :class="{ 'is-invalid': store.errors?.value?.password_confirmation?.length > 0 }"
                   id="password_confirmation"
                   name="password_confirmation"
                   aria-describedby="password_confirmationHelp"

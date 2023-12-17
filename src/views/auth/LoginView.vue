@@ -5,13 +5,6 @@ import { onBeforeUnmount } from 'vue'
 
 const store = useLogin()
 onBeforeUnmount(store.resetForm)
-
-const validationClass = (field) => {
-  if (store.errors?.value?.[field]?.length > 0) {
-    return 'is-invalid'
-  }
-  return ''
-}
 </script>
 
 <template>
@@ -31,7 +24,7 @@ const validationClass = (field) => {
                   type="email"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('email')"
+                  :class="{ 'is-invalid': store.errors?.value?.email?.length > 0 }"
                   id="email"
                   name="email"
                   aria-describedby="emailHelp"
@@ -47,7 +40,7 @@ const validationClass = (field) => {
                   type="password"
                   class="form-control"
                   :disabled="store.loading"
-                  :class="validationClass('password')"
+                  :class="{ 'is-invalid': store.errors?.value?.password?.length > 0 }"
                   id="password"
                   name="password"
                 />

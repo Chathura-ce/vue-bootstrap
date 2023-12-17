@@ -1,5 +1,5 @@
 <script setup>
-import {watchEffect, onBeforeUnmount} from 'vue'
+import {watchEffect, onBeforeUnmount, computed} from 'vue'
 
 import {useVehicle} from '@/stores/vehicle'
 import {useRoute} from "vue-router";
@@ -7,13 +7,6 @@ import {useRoute} from "vue-router";
 const store = useVehicle()
 const route = useRoute()
 onBeforeUnmount(store.resetForm)
-const validationClass = (field) => {
-  if (store.errors?.value?.[field]?.length > 0) {
-    return 'is-invalid'
-  }
-  return ''
-}
-
 watchEffect(async () => {
   store.getVehicle({id: route.params.id});
 })
@@ -36,7 +29,7 @@ watchEffect(async () => {
                     type="text"
                     class="form-control plate"
                     :disabled="store.loading"
-                    :class="validationClass('plate_number')"
+                    :class="{ 'is-invalid': store.errors?.value?.plate_number?.length > 0 }"
                     id="plate_number"
                     name="plate_number"
                     aria-describedby="plate_numberHelp"
@@ -52,7 +45,7 @@ watchEffect(async () => {
                     type="text"
                     class="form-control"
                     :disabled="store.loading"
-                    :class="validationClass('description')"
+                    :class="{ 'is-invalid': store.errors?.value?.description?.length > 0 }"
                     id="description"
                     name="description"
                     placeholder="My Ferrari, Big truck, Rental"

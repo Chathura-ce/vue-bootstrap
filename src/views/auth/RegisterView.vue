@@ -6,12 +6,6 @@ import { onBeforeUnmount } from 'vue'
 const store = useRegister()
 onBeforeUnmount(store.resetForm)
 
-const validationClass = (field) => {
-  if (store.errors?.value?.[field]?.length > 0) {
-    return 'is-invalid'
-  }
-  return ''
-}
 </script>
 
 <template>
@@ -28,7 +22,7 @@ const validationClass = (field) => {
                   v-model="store.form.name"
                   type="text"
                   class="form-control"
-                  :class="validationClass('name')"
+                  :class="{ 'is-invalid': store.errors?.value?.name?.length > 0 }"
                   id="name"
                   name="name"
                   aria-describedby="emailHelp"
@@ -43,7 +37,7 @@ const validationClass = (field) => {
                   v-model="store.form.email"
                   type="email"
                   class="form-control"
-                  :class="validationClass('email')"
+                  :class="{ 'is-invalid': store.errors?.value?.email?.length > 0 }"
                   id="email"
                   name="email"
                   aria-describedby="emailHelp"
@@ -58,7 +52,7 @@ const validationClass = (field) => {
                   v-model="store.form.password"
                   type="password"
                   class="form-control"
-                  :class="validationClass('password')"
+                  :class="{ 'is-invalid': store.errors?.value?.password?.length > 0 }"
                   id="password"
                   name="password"
                 />
