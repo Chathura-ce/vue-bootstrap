@@ -85,6 +85,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-light-blue{
+.bg-light-blue {
   background-color: #e3f2fd;
+}
+
+.plate {
+  @apply font-mono font-bold uppercase;
 }
