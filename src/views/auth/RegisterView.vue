@@ -1,7 +1,7 @@
 <script setup>
 import { useRegister } from '@/stores/register'
 import { onBeforeUnmount } from 'vue'
-import IconSpiner from '@/components/IconSpiner.vue'
+import IconSpinner from '@/components/IconSpinner.vue'
 
 const store = useRegister()
 onBeforeUnmount(store.resetForm)
@@ -78,7 +78,7 @@ const validationClass = (field) => {
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-outline-primary" type="submit" :disabled="store.loading">
-                  <IconSpiner v-show="store.loading" />
+                  <IconSpinner v-show="store.loading" />
                   Register
                 </button>
               </div>

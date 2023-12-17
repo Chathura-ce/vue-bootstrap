@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount } from 'vue'
-import IconSpiner from '@/components/IconSpiner.vue'
+import IconSpinner from '@/components/IconSpinner.vue'
 import { useVehicle } from '@/stores/vehicle'
 const store = useVehicle()
 onBeforeUnmount(store.resetForm)
@@ -55,7 +55,7 @@ const validationClass = (field) => {
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-outline-primary" type="submit" :disabled="store.loading">
-                  <IconSpiner v-show="store.loading" />Save Vehicle
+                  <IconSpinner v-show="store.loading" />Save Vehicle
                 </button>
                 <RouterLink :to="{ name: 'vehicles.index' }" class="btn btn-outline-secondary">
                   Cancel

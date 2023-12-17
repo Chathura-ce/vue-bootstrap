@@ -1,7 +1,7 @@
 <script setup>
 import { useProfile } from '@/stores/profile'
 import { onBeforeUnmount, onMounted } from 'vue'
-import IconSpiner from '@/components/IconSpiner.vue'
+import IconSpinner from '@/components/IconSpinner.vue'
 const store = useProfile()
 onMounted(store.fetchProfile)
 onBeforeUnmount(store.resetForm)
@@ -54,7 +54,7 @@ const validationClass = (field) => {
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-outline-primary" type="submit" :disabled="store.loading">
-                  <IconSpiner v-show="store.loading" />Update profile
+                  <IconSpinner v-show="store.loading" />Update profile
                 </button>
               </div>
             </form>
