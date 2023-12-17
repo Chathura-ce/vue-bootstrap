@@ -1,6 +1,6 @@
 <script setup>
 import { onBeforeUnmount } from 'vue'
-import IconSpinner from '@/components/IconSpinner.vue'
+
 import { useVehicle } from '@/stores/vehicle'
 const store = useVehicle()
 onBeforeUnmount(store.resetForm)

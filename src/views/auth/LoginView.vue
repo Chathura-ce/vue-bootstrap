@@ -1,7 +1,7 @@
 <script setup>
 import { useLogin } from '@/stores/login'
 import { onBeforeUnmount } from 'vue'
-import IconSpinner from '@/components/IconSpinner.vue'
+
 
 const store = useLogin()
 onBeforeUnmount(store.resetForm)

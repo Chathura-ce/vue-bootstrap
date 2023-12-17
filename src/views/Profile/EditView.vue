@@ -1,7 +1,7 @@
 <script setup>
 import { useProfile } from '@/stores/profile'
 import { onBeforeUnmount, onMounted } from 'vue'
-import IconSpinner from '@/components/IconSpinner.vue'
+
 const store = useProfile()
 onMounted(store.fetchProfile)
 onBeforeUnmount(store.resetForm)

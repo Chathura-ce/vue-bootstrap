@@ -1,7 +1,7 @@
 <script setup>
 import { useRegister } from '@/stores/register'
 import { onBeforeUnmount } from 'vue'
-import IconSpinner from '@/components/IconSpinner.vue'
+
 
 const store = useRegister()
 onBeforeUnmount(store.resetForm)

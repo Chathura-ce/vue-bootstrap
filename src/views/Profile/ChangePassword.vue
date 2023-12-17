@@ -1,7 +1,7 @@
 <script setup>
 import { useChangePassword } from '@/stores/changePassword'
 import { onBeforeUnmount } from 'vue'
-import IconSpinner from '@/components/IconSpinner.vue'
+
 const store = useChangePassword()
 onBeforeUnmount(store.resetForm)
 const validationClass = (field) => {
