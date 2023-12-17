@@ -1,16 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-function auth(to,from,next) {
-  if (!localStorage.getItem('access_token')){
-    return next({name:"login"});
+function auth(to, from, next) {
+  if (!localStorage.getItem('access_token')) {
+    return next({ name: 'login' })
   }
-  next();
+  next()
 }
-function guest(to,from,next) {
-  if (localStorage.getItem('access_token')){
-    return next({name:"vehicles.index"});
+function guest(to, from, next) {
+  if (localStorage.getItem('access_token')) {
+    return next({ name: 'vehicles.index' })
   }
-  next();
+  next()
 }
 
 const router = createRouter({
@@ -19,26 +19,50 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ()=> import('@/views/HomeView.vue')
+      component: () => import('@/views/HomeView.vue')
     },
     {
       path: '/login',
       name: 'login',
-      beforeEnter:guest,
+      beforeEnter: guest,
       component: () => import('@/views/auth/LoginView.vue')
     },
     {
       path: '/register',
       name: 'register',
-      beforeEnter:guest,
+      beforeEnter: guest,
       component: () => import('@/views/auth/RegisterView.vue')
     },
     {
       path: '/vehicles',
       name: 'vehicles.index',
-      beforeEnter:auth,
+      beforeEnter: auth,
       component: () => import('@/views/Vehicles/IndexView.vue')
-    }
+    },
+    {
+      path: '/profile',
+      name: 'profile.edit',
+      beforeEnter: auth,
+      component: () => import('@/views/Profile/EditView.vue')
+    },
+    {
+      path: '/profile/change-password',
+      name: 'profile.change-password',
+      beforeEnter: auth,
+      component: () => import('@/views/Profile/ChangePassword.vue')
+    },
+    {
+      path: '/vehicles/create',
+      name: 'vehicles.create',
+      beforeEnter: auth,
+      component: () => import('@/views/Vehicles/CreateView.vue')
+    },
+    {
+      path: '/vehicles/:id/edit',
+      name: 'vehicles.edit',
+      beforeEnter: auth,
+      component: () => import('@/views/Vehicles/EditView.vue')
+    },
   ]
 })
 
