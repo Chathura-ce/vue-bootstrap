@@ -51,13 +51,18 @@ const router = createRouter({
       beforeEnter: auth,
       component: () => import('@/views/Profile/ChangePassword.vue')
     },
-    ,
     {
       path: '/vehicles/create',
       name: 'vehicles.create',
       beforeEnter: auth,
       component: () => import('@/views/Vehicles/CreateView.vue')
-    }
+    },
+    {
+      path: '/vehicles/:id/edit',
+      name: 'vehicles.edit',
+      beforeEnter: auth,
+      component: () => import('@/views/Vehicles/EditView.vue')
+    },
   ]
 })
 

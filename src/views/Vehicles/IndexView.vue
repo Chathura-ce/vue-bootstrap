@@ -25,10 +25,14 @@ onMounted(store.getVehicles);
               <ul class="list-group">
                 <li v-for="vehicle in store.vehicles" :key="vehicle.id" class="list-group-item">
                   <div class="row">
-                    <div class="col-sm-2">{{vehicle.plate_number}}</div>
-                    <div class="col-sm-7">{{vehicle.description}}</div>
+                    <div class="col-sm-2">{{ vehicle.plate_number }}</div>
+                    <div class="col-sm-7">{{ vehicle.description }}</div>
                     <div class="col-sm-3">
-                      <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-pencil" /></button>
+                      <RouterLink
+                          :to="{name:'vehicles.edit',params:{id:vehicle.id}}"
+                          class="btn btn-outline-secondary btn-sm">
+                        <i class="bi bi-pencil"/>
+                      </RouterLink>
                       <button class="btn btn-outline-danger btn-sm ms-2"><i class="bi bi-trash"></i></button>
                     </div>
                   </div>
